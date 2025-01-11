@@ -41,13 +41,14 @@ function calculateRates() {
   const goldRate = parseFloat(document.getElementById("gold-rate").value);
   const buyingMargin = parseFloat(document.getElementById("buying-margin").value);
   const sellingMargin = parseFloat(document.getElementById("selling-margin").value);
+  const wastage = parseFloat(document.getElementById("wastage").value);
 
-  if (isNaN(goldRate) || isNaN(buyingMargin) || isNaN(sellingMargin)) {
+  if (isNaN(goldRate) || isNaN(buyingMargin) || isNaN(sellingMargin) || isNaN(wastage)) {
     alert("માન્ય ડેટા નાખો.");
     return;
   }
 
-  if (buyingMargin < 0 || buyingMargin > 100 || sellingMargin < 0 || sellingMargin > 100) {
+  if (buyingMargin < 0 || buyingMargin > 100 || sellingMargin < 0 || sellingMargin > 100 ) {
     alert("માર્જિન 0 થી 100 માં નાખો");
     return;
   }
@@ -56,15 +57,15 @@ function calculateRates() {
   const calculateTotalPerGram = (percentage, margin) => (goldRate / 10) * percentage / (1 - (margin / 100));
 
   const goldRate22 = roundoff(calculateGoldRate(0.915, buyingMargin), true);
-  const totalPerGram22 = roundoff(calculateTotalPerGram(0.98, sellingMargin), false);
+  const totalPerGram22 = roundoff(calculateTotalPerGram(0.92+(wastage/100), sellingMargin), false);
   const makingCharges22 = (totalPerGram22 - goldRate22);
 
   const goldRate20 = roundoff(calculateGoldRate(0.83, buyingMargin), true);
-  const totalPerGram20 = roundoff(calculateTotalPerGram(0.90, sellingMargin), false);
+  const totalPerGram20 = roundoff(calculateTotalPerGram(0.84+(wastage/100), sellingMargin), false);
   const makingCharges20 = (totalPerGram20 - goldRate20);
 
   const goldRate18 = roundoff(calculateGoldRate(0.75, buyingMargin), true);
-  const totalPerGram18 = roundoff(calculateTotalPerGram(0.82, sellingMargin), false);
+  const totalPerGram18 = roundoff(calculateTotalPerGram(0.76+(wastage/100), sellingMargin), false);
   const makingCharges18 = (totalPerGram18 - goldRate18);
 
   document.getElementById("table-heading").innerText = goldRate;
@@ -83,6 +84,10 @@ function calculateRates() {
   document.getElementById("gold-rate-18").innerText = goldRate18*10;
   document.getElementById("making-charges-18").innerText = makingCharges18;
   document.getElementById("total-per-gram-18").innerText = totalPerGram18;
+
+  document.getElementById("buying-margin-view").innerText = buyingMargin;
+  document.getElementById("selling-margin-view").innerText = sellingMargin;
+  document.getElementById("wastage-view").innerText = wastage;
 
   document.getElementById("input-section").style.display = "none";
   document.getElementById("table-section").style.display = "block";

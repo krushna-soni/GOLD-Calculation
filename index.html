@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gold Rate Calculator</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  
+  <!-- Manifest and meta tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#007BFF">
+  <meta name="description" content="Gold Rate Calculator for buying and selling gold.">
 </head>
 <body>
   <div id="input-section">
@@ -16,6 +20,8 @@
     <input type="number" id="buying-margin" placeholder="જૂનું લેવા માટે (%)" value="5">
     <label for="selling-margin">નવા માટે (%):</label>
     <input type="number" id="selling-margin" placeholder="નવું વેંચવા માટે (%)" value="10">
+    <label for="wastage"> વેસ્ટેજ :</label>
+    <input type="number" id="wastage" placeholder="વેસ્ટેજ" value="6">
     <button id="calculate-btn">Calculate</button>
   </div>
 
@@ -25,9 +31,9 @@
       <thead>
         <tr>
           <th id="dateCell" class="melting-column"></th>
-          <th>ભાવ</th>
-          <th>મજૂરી</th>
-          <th>પ્રતિ ગ્રામ</th>
+          <th>Gold Rate</th>
+          <th>Making Charges</th>
+          <th>Total Per Gram</th>
         </tr>
       </thead>
       <tbody>
@@ -53,8 +59,24 @@
     </table>
     <button id="back-btn">Back</button>
     <button id="save-btn">Save Table</button>
+    <p>
+      જૂના માટે: <span id="buying-margin-view"></span>% <br>
+      નવા માટે: <span id="selling-margin-view"></span>% <br>
+      વેસ્ટેજ : <span id="wastage-view"></span>
+    </p>
   </div>
+
+  <!-- Include external scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="script.js"></script>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('Service Worker Registered'))
+        .catch(error => console.error('Service Worker Registration Failed:', error));
+    }
+  </script>
 </body>
 </html>
