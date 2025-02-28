@@ -69,3 +69,7 @@ thead tr th:first-child {
   color: black;
   font-weight: bold;
 }
+
+#OtherRate{
+  background-color: #FFC4DA !important; 
+}
