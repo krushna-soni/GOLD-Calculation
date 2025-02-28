@@ -18,6 +18,9 @@
     <label for="gold-rate">Gold Rate (પ્રતિ 10 ગ્રામ):</label>
     <input type="number" id="gold-rate" placeholder="પ્રતિ 10 ગ્રામ">
 
+    <label for="wastage"> વેસ્ટેજ :</label>
+    <input type="number" id="wastage" placeholder="વેસ્ટેજ" value="8">
+
     <label for="selling-margin">નવા માટે (%):</label>
     <input type="number" id="selling-margin" placeholder="નવું વેંચવા માટે (%)" value="15">
 
@@ -26,9 +29,6 @@
 
     <label for="buying-margin">જૂના માટે - Other(%):</label>
     <input type="number" id="buying-margin-other" placeholder="જૂનું લેવા માટે (%)" value="10">
-
-    <label for="wastage"> વેસ્ટેજ :</label>
-    <input type="number" id="wastage" placeholder="વેસ્ટેજ" value="8">
 
     <button id="calculate-btn">Calculate</button>
   </div>
@@ -39,46 +39,53 @@
       <thead>
         <tr>
           <th id="dateCell" class="melting-column"></th>
+          <th>કુલ (મજૂરી સાથે)</th>
+
           <th>ભાવ - SJ</th>
           <th>મજૂરી</th>
-          <th>કુલ (મજૂરી સાથે)</th>
-          <th>ભાવ - Other (જૂનું)</th>
+          
+          <th style="background-color: #FFC4DA;">ભાવ - Other (જૂનું)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>SA<br>22K - 916</td>
+          <td id="total-per-gram-22"></td>
           <td id="gold-rate-22-sj"></td>
           <td id="making-charges-22"></td>
-          <td id="total-per-gram-22"></td>
+          
           <td id="gold-rate-22-other"></td>
         </tr>
         <tr>
           <td>SB<br>20K - 84</td>
+          <td id="total-per-gram-20"></td>
           <td id="gold-rate-20-sj"></td>
           <td id="making-charges-20"></td>
-          <td id="total-per-gram-20"></td>
+          
           <td id="gold-rate-20-other"></td>
         </tr>
         <tr>
           <td>SC<br>18K - 76</td>
+          <td id="total-per-gram-18"></td>
           <td id="gold-rate-18-sj"></td>
           <td id="making-charges-18"></td>
-          <td id="total-per-gram-18"></td>
+          
           <td id="gold-rate-18-other"></td>
         </tr>
         <tr>
           <td>SD<br>16K - 68</td>
+          <td id="total-per-gram-16"></td>
           <td id="gold-rate-16-sj"></td>
           <td id="making-charges-16"></td>
-          <td id="total-per-gram-16"></td>
+          
           <td id="gold-rate-16-other"></td>
         </tr>
         <tr>
           <td>SE<br>12K - 50</td>
+          <td id="total-per-gram-12"></td>
           <td id="gold-rate-12-sj"></td>
           <td id="making-charges-12"></td>
-          <td id="total-per-gram-12"></td>
+          
           <td id="gold-rate-12-other"></td>
         </tr>
       </tbody>
@@ -86,10 +93,10 @@
     <button id="back-btn">Back</button>
     <button id="save-btn">Save Table</button>
     <p>
+      વેસ્ટેજ : <span id="wastage-view"></span> <br>
       નવા માટે: <span id="selling-margin-view"></span>% <br>
       જૂના માટે - SJ: <span id="buying-margin-view-sj"></span>% <br>
-      જૂના માટે - Other: <span id="buying-margin-view-other"></span>% <br>
-      વેસ્ટેજ : <span id="wastage-view"></span>
+      જૂના માટે - Other: <span id="buying-margin-view-other"></span>% 
     </p>
   </div>
 
